@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Anh em",
+    "function_1": "",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 1,
+    "quantity": 3
+  },
+  {
+    "id": 2,
+    "name": "Cupid",
+    "function_1": "link_1",
+    "function_2": "link_2",
+    "hidden_function": "",
+    "priority": 2,
+    "quantity": 1
+  },
+  {
+    "id": 3,
+    "name": "Con hoang",
+    "function_1": "chon_cha",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 3,
+    "quantity": 1
+  },
+  {
+    "id": 4,
+    "name": "Bảo vệ",
+    "function_1": "bao_ve",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 4,
+    "quantity": 1
+  },
+  {
+    "id": 5,
+    "name": "Cổ hoặc sư",
+    "function_1": "me_hoac",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 5,
+    "quantity": 1
+  },
+  {
+    "id": 6,
+    "name": "Sói anh",
+    "function_1": "",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 6,
+    "quantity": 1
+  },
+  {
+    "id": 7,
+    "name": "Sói em",
+    "function_1": "",
+    "function_2": "",
+    "hidden_function": "an_sau_soi_anh",
+    "priority": 7,
+    "quantity": 1
+  },
+  {
+    "id": 8,
+    "name": "Sói",
+    "function_1": "can",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 8,
+    "quantity": 3
+  },
+  {
+    "id": 9,
+    "name": "Sói nguyền",
+    "function_1": "nguyen",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 9,
+    "quantity": 1
+  },
+  {
+    "id": 10,
+    "name": "Sói trùm",
+    "function_1": "can_them",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 10,
+    "quantity": 1
+  },
+  {
+    "id": 11,
+    "name": "Sói lửa",
+    "function_1": "can_xoa",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 11,
+    "quantity": 1
+  },
+  {
+    "id": 12,
+    "name": "Tiên tri",
+    "function_1": "soi",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 12,
+    "quantity": 1
+  },
+  {
+    "id": 13,
+    "name": "Cáo",
+    "function_1": "soi_cao",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 13,
+    "quantity": 1
+  },
+  {
+    "id": 14,
+    "name": "Phù thuỷ",
+    "function_1": "cuu",
+    "function_2": "doc",
+    "hidden_function": "",
+    "priority": 14,
+    "quantity": 1
+  },
+  {
+    "id": 15,
+    "name": "Thợ săn",
+    "function_1": "keo",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 15,
+    "quantity": 1
+  },
+  {
+    "id": 16,
+    "name": "Liễu",
+    "function_1": "khoa_mom",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 16,
+    "quantity": 1
+  },
+  {
+    "id": 17,
+    "name": "Kỵ sĩ",
+    "function_1": "",
+    "function_2": "",
+    "hidden_function": 17,
+    "priority": 1,
+    "quantity": ""
+  },
+  {
+    "id": 18,
+    "name": "Hiệp sĩ",
+    "function_1": "",
+    "function_2": "",
+    "hidden_function": "keo_soi_ben_trai",
+    "priority": 18,
+    "quantity": 1
+  },
+  {
+    "id": 19,
+    "name": "Già làng",
+    "function_1": "",
+    "function_2": "",
+    "hidden_function": "hai_mang",
+    "priority": 19,
+    "quantity": 1
+  },
+  {
+    "id": 20,
+    "name": "Dân đen",
+    "function_1": "",
+    "function_2": "",
+    "hidden_function": "",
+    "priority": 20,
+    "quantity": 4
+  }
+]

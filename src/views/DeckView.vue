@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TheHome from '@/pages/TheHome.vue'
+import TheDeck from '@/pages/TheDeck.vue'
 </script>
 
 <template>
-  <TheHome />
+  <TheDeck />
 </template>

@@ -1,8 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import SettingView from '../views/SettingView.vue'
-import TheDeck from '../pages/TheDeck.vue'
-import ThePeople from '../pages/ThePeople.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,22 +6,32 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: () => import('@/views/HomeView.vue'),
     },
     {
       path: '/setting',
       name: 'setting',
-      component: SettingView,
+      component: () => import('@/views/SettingView.vue'),
     },
     {
       path: '/deck',
       name: 'deck',
-      component: TheDeck,
+      component: () => import('@/views/DeckView.vue'),
     },
     {
-      path: '/people',
-      name: 'people',
-      component: ThePeople,
+      path: '/player',
+      name: 'player',
+      component: () => import('@/views/PlayerView.vue'),
+    },
+    {
+      path: '/night',
+      name: 'night',
+      component: () => import('@/views/NightView.vue'),
+    },
+    {
+      path: '/day',
+      name: 'day',
+      component: () => import('@/views/DayView.vue'),
     },
   ],
 })

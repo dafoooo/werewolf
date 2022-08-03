@@ -1,94 +1,87 @@
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue'
-import roles from '../data/roles.json'
+import { useGameStore, type ICard } from '@/stores/game'
+import { storeToRefs } from 'pinia'
+import { onMounted, ref } from 'vue'
+import roles from '@/data/roles.json'
+import PrimaryButton from '@/components/atoms/PrimaryButton.vue'
+import TextButton from '@/components/atoms/TextButton.vue'
+import Header from '../components/molecules/Header.vue'
 
-type Card = {
-  id: number
-  name: string
-  cardId: number
-}
-
-const state: { deck: Card[]; pool: Card[]; roleIds: number[] } = reactive({
-  deck: [],
-  pool: [],
-  roleIds: [],
-})
+const game = useGameStore()
+const { deck } = storeToRefs(game)
+const { getCardFromDeck, getCardFromPool, setPool, addToDeck, removeFromDeck, setPopulation } = game
+const count = ref<number>(0)
 
 onMounted(() => {
-  let cardId = 0
+  const tmpPool: ICard[] = []
+  let id = 0
   roles.forEach((role) => {
     for (let i = 0; i < role.quantity; i++) {
-      let name = role.quantity === 1 ? role.name : `${role.name} #${i + 1}`
-      state.pool.push({ id: role.id, name, cardId })
-      cardId++
+      const name = role.quantity === 1 ? role.roleName : `${role.roleName} #${i + 1}`
+      tmpPool.push({ id, name, ...role })
+      id++
     }
   })
+
+  setPool(tmpPool)
 })
 
-const select = (cardId: number) => {
-  // validate maximum
-  const removedCard = state.deck.find((card) => card.cardId === cardId)
-  const selectedCard = state.pool.find((card) => card.cardId === cardId)
+const select = (id: number): void => {
+  const removedCard = getCardFromDeck(id)
+  const selectedCard = getCardFromPool(id)
 
   if (removedCard) {
-    state.deck.splice(state.deck.indexOf(removedCard), 1)
+    removeFromDeck(removedCard)
   } else if (selectedCard) {
-    state.deck.push({
-      id: selectedCard.id,
-      name: selectedCard.name,
-      cardId: selectedCard.cardId,
-    })
+    if (deck.value.length < count.value) addToDeck(selectedCard)
   }
-
-  state.roleIds = state.deck.map((card) => card.id).filter((v, i, a) => a.indexOf(v) === i)
-
-  console.log(state.roleIds)
 }
 
-const isSelected = (cardId: number): boolean => {
-  return state.deck.find((card) => card.cardId === cardId) ? true : false
+const isSelected = (id: number): boolean => {
+  return !!getCardFromDeck(id)
 }
 </script>
 
 <template>
-  <div class="hero min-h-screen bg-base-200">
-    <div class="hero-content flex-col lg:flex-row-reverse">
-      <div class="text-center lg:text-left">
-        <h1 class="text-2xl font-bold uppercase">Pick a card, any card</h1>
-        <p class="py-6">
-          Sử dụng kinh nghiệm 200 năm cân bằng game <br />
-          để bốc một bộ bài thật công bằng cho cả sói và dân.
-        </p>
+  <Header
+    title="Pick a card, any card"
+    subtitle="Sử dụng kinh nghiệm 200 năm cân bằng game <br />
+      để setup một bộ bài thật công bằng cho cả làng." />
+  <div class="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+    <div class="card-body">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Số lượng dân</span>
+        </label>
+        <input
+          type="number"
+          min="0"
+          max="100"
+          placeholder="10"
+          v-model="count"
+          @blur="setPopulation(count)"
+          class="input input-bordered" />
       </div>
-      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-        <div class="card-body">
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Số lượng dân</span>
-            </label>
-            <input type="number" min="0" max="100" placeholder="10" class="input input-bordered" />
-          </div>
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Bốc bài</span>
-            </label>
-            <div class="btn-group btn-group-vertical h-96 overflow-auto">
-              <button
-                class="btn"
-                v-if="state.pool"
-                v-for="card in state.pool"
-                :class="{ 'btn-active': isSelected(card.cardId) }"
-                @click="() => select(card.cardId)"
-              >
-                {{ card.name }}
-              </button>
-            </div>
-          </div>
-          <div class="form-control mt-6">
-            <RouterLink class="btn btn-primary px-10 py-2" to="/people">Tiếp</RouterLink>
-            <RouterLink to="/" class="btn btn-link text-sm text-secondary"> Thôi </RouterLink>
-          </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Bốc bài</span>
+        </label>
+        <div
+          v-if="game.pool"
+          class="btn-group btn-group-vertical h-96 overflow-y-auto overflow-x-hidden">
+          <button
+            class="btn"
+            v-for="card in game.pool"
+            :key="card.id"
+            :class="{ 'btn-active': isSelected(card.id) }"
+            @click="() => select(card.id)">
+            {{ card.name }}
+          </button>
         </div>
+      </div>
+      <div class="form-control mt-2">
+        <PrimaryButton to="/player" text="Tiếp" />
+        <TextButton to="/" text="Thôi" />
       </div>
     </div>
   </div>

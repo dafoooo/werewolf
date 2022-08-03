@@ -10,11 +10,7 @@ module.exports = {
     '@vue/eslint-config-prettier',
   ],
   rules: {
-    printWidth: 100,
-    tabWidth: 2,
-    useTabs: false,
-    semi: false,
-    singleQuote: true,
-    trailingComma: 'all',
+    '@typescript-eslint/no-explicit-any': 0,
+    'vue/multi-word-component-names': 0,
   },
 }

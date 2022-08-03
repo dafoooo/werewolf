@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TheHome from '@/pages/TheHome.vue'
+import TheDay from '@/pages/TheDay.vue'
 </script>
 
 <template>
-  <TheHome />
+  <TheDay />
 </template>
